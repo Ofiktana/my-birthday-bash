@@ -1,10 +1,9 @@
+import Invitation from "./pages/Invitation"
 function App() {
 
   return (
     <>
-      <p>
-        Hello React
-      </p>
+      <Invitation />
     </>
   )
 }
