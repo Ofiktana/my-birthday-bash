@@ -47,7 +47,7 @@ function PartyDetails() {
       p={4}
       justify={'space-evenly'}
     >
-      <Text fontWeight={"semibold"} textStyle={"2xl"}>
+      <Text fontWeight={"semibold"} textStyle={"4xl"}>
         {partyDetails.title || `${partyDetails.celebrantFirstName} @ ${partyDetails.age}`}
       </Text>
       <Flex
@@ -87,8 +87,8 @@ function PartyDetails() {
         Please RSVP to {partyDetails.contact.name} via{" "}
         {partyDetails.contact.means} on {partyDetails.contact.phone} and let us
         know if your child has any dietary or other requirements. We hope to see
-        you there! {' '}
-      <Link color={'blue.700'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a wish</Link>
+        you there! {' '} <br/>
+      <Link textStyle={'lg'} color={'pink.800'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a wish</Link>
       </Text>
     </VStack>
   );

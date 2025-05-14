@@ -9,7 +9,7 @@ function Background({ image, children }) {
       bgImage={`url(${image})`}
       bgRepeat={"repeat"}
       backgroundPosition={"center"}
-      bgSize={"90px 110px"}
+      bgSize={"70px 70px"}
       justify={"center"}
       align={{ base: "end", md: "center" }}
       p={4}
