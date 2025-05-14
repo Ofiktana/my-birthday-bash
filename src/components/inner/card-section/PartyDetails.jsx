@@ -40,7 +40,7 @@ function PartyDetails() {
   return (
     <VStack
       rounded={"xl"}
-      border={"1px solid lightgrey"}
+      border={"1px solid white"}
       width={"100%"}
       height={"100%"}
       gap={{base: 2, xl: 8}}
@@ -83,13 +83,13 @@ function PartyDetails() {
           })}
         </Flex>
       </Flex>
-      <Text mt={0} textStyle={"md"} textAlign={"center"}>
+      <Text fontStyle={'italic'} mt={0} textStyle={"sm"} textAlign={"center"}>
         Please RSVP to {partyDetails.contact.name} via{" "}
         {partyDetails.contact.means} on {partyDetails.contact.phone} and let us
         know if your child has any dietary or other requirements. We hope to see
         you there! {' '} <br/>
-      <Link textStyle={'lg'} color={'pink.800'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a wish</Link>
       </Text>
+      <Link textStyle={'md'} color={'pink.800'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a wish</Link>
     </VStack>
   );
 }

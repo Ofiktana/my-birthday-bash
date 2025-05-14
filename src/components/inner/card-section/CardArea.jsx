@@ -5,13 +5,13 @@ function CardArea() {
   return (
     <Flex
       width={{ base: "100%", xl: "40%" }}
-      height={{ base: "42%", lg: "45%", xl: "100%" }}
+      height={{ base: "42%", lg: "47%", xl: "100%" }}
       display={{ base: "none", md: "flex" }}
       bgGradient={{ base: "to-b", xl: "to-b" }}
       roundedBottomLeft={{ base: "none", xl: "inherit" }}
       roundedTopLeft={{ base: "inherit" }}
       roundedTopRight={{ base: "inherit", xl: "none" }}
-      gradientFrom={"blue.900"}
+      gradientFrom={"blue.800"}
       gradientTo={"pink.300"}
       color={"white"}
       justify={"center"}
