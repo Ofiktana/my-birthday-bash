@@ -4,19 +4,18 @@ import PartyDetails from "./PartyDetails";
 function CardArea() {
   return (
     <Flex
-      width={{ base: "100%", xl: "40%" }}
-      height={{ base: "42%", lg: "47%", xl: "100%" }}
-      display={{ base: "none", md: "flex" }}
       bgGradient={{ base: "to-b", xl: "to-b" }}
-      roundedBottomLeft={{ base: "none", xl: "inherit" }}
-      roundedTopLeft={{ base: "inherit" }}
-      roundedTopRight={{ base: "inherit", xl: "none" }}
+      roundedBottomLeft={{ base: "xl", md: 'none', xl: "xl" }}
+      roundedBottomRight={{ base: "xl", md: 'none' }}
+      roundedTopLeft={{ base: "xl" }}
+      roundedTopRight={{ base: "xl", xl: "none" }}
       gradientFrom={"blue.800"}
       gradientTo={"pink.300"}
       color={"white"}
       justify={"center"}
       align={"center"}
       p={1}
+      height={{base: '100%'}}
     >
       <PartyDetails />
     </Flex>
