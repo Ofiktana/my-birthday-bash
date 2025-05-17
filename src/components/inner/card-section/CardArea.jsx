@@ -10,12 +10,13 @@ function CardArea() {
       roundedTopLeft={{ base: "xl" }}
       roundedTopRight={{ base: "xl", xl: "none" }}
       gradientFrom={"blue.800"}
-      gradientTo={"pink.300"}
+      gradientTo={"red.300"}
       color={"white"}
       justify={"center"}
       align={"center"}
       p={1}
       height={{base: '100%'}}
+      width={{base: '100%'}}
     >
       <PartyDetails />
     </Flex>

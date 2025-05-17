@@ -1,7 +1,8 @@
-import { Tabs, Text } from "@chakra-ui/react";
+import { Tabs, Text, Flex } from "@chakra-ui/react";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { TbJewishStar } from "react-icons/tb";
 import CardArea from "./card-section/CardArea";
+import WishesCatalog from "./wishes-section/WishesCatalog";
 
 function MobileInvitationTabs() {
   return (
@@ -27,7 +28,12 @@ function MobileInvitationTabs() {
       <Tabs.Content height={"92%"} value="invitation">
         <CardArea />
       </Tabs.Content>
-      <Tabs.Content value="wishes">Manage your projects</Tabs.Content>
+      <Tabs.Content height={"88%"} value="wishes">
+        <Flex justify={'space-between'} h={"100%"} direction={"column"}>
+
+        <WishesCatalog />
+        </Flex>
+      </Tabs.Content>
     </Tabs.Root>
   );
 }

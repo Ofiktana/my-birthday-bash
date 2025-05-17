@@ -1,7 +1,12 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text, Link } from "@chakra-ui/react";
 import CardArea from "./card-section/CardArea";
 import Wish from "./wishes-section/Wish";
+import WishPopOut from "./wishes-section/WishPopOut";
 import MobileInvitationTabs from "./MobileInvitationTabs";
+import WishesTitle from "./wishes-section/WishesTitle";
+import WishesTabs from "./wishes-section/WishesTabs";
+import { IoLogoInstagram } from "react-icons/io5";
+import WishesCatalog from "./wishes-section/WishesCatalog";
 
 function MainArea() {
   return (
@@ -16,21 +21,31 @@ function MainArea() {
     >
       <Flex
         width={{ base: "100%", xl: "40%" }}
-        height={{ base: "42%", lg: "47%", xl: "100%" }}
+        height={{ base: "420px", lg: "450px", xl: "100%" }}
         display={{ base: "none", md: "flex" }}
-        roundedBottomLeft={{ base: "xl", md: 'none', xl: "xl" }}
+        roundedBottomLeft={{ base: "xl", md: "none", xl: "xl" }}
         roundedTopLeft={{ base: "xl" }}
         roundedTopRight={{ base: "xl", xl: "none" }}
       >
         <CardArea />
       </Flex>
-      {/* <Flex width={{ xl: "60%" }} p={4} overflowY={"scroll"}>
-        <Wish />
-      </Flex> */}
-      <Flex height={'100%'} display={{base: 'flex', md: 'none'}}>
+      <Flex
+        display={{ base: "none", md: "flex" }}
+        height={{ base: "58%", lg: "53%", xl: "100%" }}
+        direction={"column"}
+        width={{ xl: "60%" }}
+        p={4}
+        gap={4}
+        overflowY={'scroll'}
+      >
+        <WishesTitle name={"Jasper"} />
+        <Flex justify={'space-between'} h={"100%"} direction={"column"}>
+          <WishesCatalog />
+        </Flex>
+      </Flex>
+      <Flex height={"100%"} display={{ base: "flex", md: "none" }}>
         <MobileInvitationTabs />
       </Flex>
-
     </Flex>
   );
 }

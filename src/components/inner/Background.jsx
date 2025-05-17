@@ -9,10 +9,11 @@ function Background({ image, children }) {
       bgImage={`url(${image})`}
       bgRepeat={"repeat"}
       backgroundPosition={"center"}
-      bgSize={"70px 70px"}
+      bgSize={{ base: "7vh 7vh", md: "7vw 7vw"}}
       justify={"center"}
       align={{ base: "end", md: "center" }}
       p={4}
+      overflowY={'scroll'}
     >
       {children}
     </Flex>

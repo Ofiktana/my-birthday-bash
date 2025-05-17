@@ -83,13 +83,12 @@ function PartyDetails() {
           })}
         </Flex>
       </Flex>
-      <Text fontStyle={'italic'} mt={0} textStyle={"sm"} textAlign={"center"}>
-        Please RSVP to {partyDetails.contact.name} via{" "}
-        {partyDetails.contact.means} on {partyDetails.contact.phone} and let us
-        know if your child has any dietary or other requirements. We hope to see
+      <Text fontStyle={'italic'} mt={0} textStyle={{base: 'xs', sm: "sm"}} textAlign={"center"}>
+        Please contact {partyDetails.contact.name} via{" "}
+        {partyDetails.contact.means} on {partyDetails.contact.phone} for any dietary or other requirements. We hope to see
         you there! {' '} <br/>
       </Text>
-      <Link textStyle={'md'} color={'pink.800'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a birthday wish</Link>
+      <Link textAlign={'center'} textStyle={'md'} color={'pink.800'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a birthday wish</Link>
     </VStack>
   );
 }
