@@ -17,6 +17,7 @@ function AddWish({ celebrant }) {
     handleSubmit,
     setError,
     watch,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
   const messageMaxLength = 75;
@@ -31,6 +32,7 @@ function AddWish({ celebrant }) {
 
       await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log(data);
+      reset()
     } catch (error) {
       setError("root", {
         message: error.message,

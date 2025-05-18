@@ -28,7 +28,7 @@ function AddWishDialog() {
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title fontFamily={'inherit'} fontWeight={'semibold'} color={themeColor}>Send a Wish </Dialog.Title>
+              <Dialog.Title fontFamily={'inherit'} fontWeight={'semibold'} color={`${themeColor}.600`}>Send a Wish </Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
               <AddWish celebrant={celebrant} />

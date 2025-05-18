@@ -11,6 +11,9 @@ import {
 import { useState } from "react";
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoHeartSharp, IoHeartOutline, IoTrashOutline } from "react-icons/io5";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { PartyContext } from "@/pages/Invitation";
 
 export default function WishPopOut({
   name,
@@ -19,17 +22,19 @@ export default function WishPopOut({
   isLiked,
   id,
 }) {
+
+  const { themeColor }  = useContext(PartyContext)
+
   const [showConfirm, setShowConfirm] = useState(false);
-  const [action, setAction] = useState('')
+  const [action, setAction] = useState("");
 
   function handleDelete() {
-    setAction('to delete')
+    setAction("to delete");
     setShowConfirm(true);
-    
   }
 
   function toggleLike() {
-    setAction(`to ${isLiked ? 'unlike': 'like'}`)
+    setAction(`to ${isLiked ? "unlike" : "like"}`);
     setShowConfirm(true);
   }
 
@@ -49,6 +54,27 @@ export default function WishPopOut({
   ];
 
   const randColor = colors[Math.floor(Math.random() * colors.length)];
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  async function onSubmit(data) {
+    data.id = id;
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log(data);
+      reset();
+    } catch (error) {
+      setError("root", {
+        message: error.message,
+      });
+    }
+  }
 
   return (
     <Popover.Root onOpenChange={exitPopOver}>
@@ -70,7 +96,7 @@ export default function WishPopOut({
           <Popover.Content>
             <Popover.Arrow />
             <Popover.Body>
-              <Popover.Title fontWeight="semibold" fontStyle={"italic"}>
+              <Popover.Title color={`${themeColor}.600`} fontWeight="semibold" fontStyle={"italic"}>
                 {" "}
                 Wish from {name}
               </Popover.Title>
@@ -80,9 +106,9 @@ export default function WishPopOut({
                 <Flex justify={"end"} width={"full"} gap={0}>
                   <IconButton onClick={toggleLike} variant={"ghost"}>
                     {isLiked ? (
-                      <IoHeartSharp style={{ color: "red" }} />
+                      <IoHeartSharp style={{ color: 'red' }} />
                     ) : (
-                      <IoHeartOutline style={{ color: "red" }} />
+                      <IoHeartOutline style={{ color: 'red' }} />
                     )}
                   </IconButton>
                   <IconButton onClick={handleDelete} variant={"ghost"}>
@@ -90,10 +116,45 @@ export default function WishPopOut({
                   </IconButton>
                 </Flex>
                 {showConfirm && (
-                  <>
-                    <Input placeholder={`Enter passcode ${action}`} />
-                    <Button colorPalette={"red"}>Confirm</Button>
-                  </>
+                  <form
+                    style={{
+                      display: "flex",
+                      gap: "1rem",
+                      flexDirection: "column",
+                      width: "100%",
+                      alignItems: "start",
+                    }}
+                    onSubmit={handleSubmit(onSubmit)}
+                  >
+                    <Input
+                      {...register("passcode", {
+                        required: "This field is required",
+                      })}
+                      placeholder={`Enter passcode ${action}`}
+                    />
+                    {errors.passcode && (
+                      <Text textStyle={"xs"} color={"red"}>
+                        {errors.passcode.message}
+                      </Text>
+                    )}
+                    <Button
+                      disabled={isSubmitting}
+                      type="submit"
+                      colorPalette={themeColor}
+                    >
+                      {isSubmitting ? "Confirming . . ." : "Confirm"}
+                    </Button>
+                    {errors.root && (
+                      <Text
+                        textStyle={"xs"}
+                        textAlign={"center"}
+                        fontWeight={"semibold"}
+                        color={"red"}
+                      >
+                        {errors.root.message}
+                      </Text>
+                    )}
+                  </form>
                 )}
               </Flex>
             </Popover.Body>

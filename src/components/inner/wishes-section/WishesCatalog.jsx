@@ -16,7 +16,7 @@ function WishesCatalog() {
         textStyle={"xs"}
         direction={"row"}
         gap={16}
-        color={themeColor}
+        color={`${themeColor}.600`}
         
       >
         <Text textStyle={"xs"} fontStyle={"italic"} fontWeight={'semibold'} textAlign={"center"}>
