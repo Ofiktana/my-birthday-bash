@@ -10,6 +10,7 @@ import {
 import { useContext } from "react";
 import { PartyContext } from "@/pages/Invitation";
 import { useForm } from "react-hook-form";
+import { addNewDoc } from "@/firebase-config/firebase";
 
 function AddWish({ celebrant }) {
   const {
@@ -28,11 +29,16 @@ function AddWish({ celebrant }) {
       data.isAttending = true
     }
 
+    data.isLiked = false
+
     try {
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log(data);
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
+      // console.log(data);
+      await addNewDoc('wishes', data)
+
       reset()
+      
     } catch (error) {
       setError("root", {
         message: error.message,

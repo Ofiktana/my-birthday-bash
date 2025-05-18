@@ -14,6 +14,11 @@ import { IoHeartSharp, IoHeartOutline, IoTrashOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { PartyContext } from "@/pages/Invitation";
+import {
+  getPasscode,
+  deleteData,
+  updateData,
+} from "@/firebase-config/firebase";
 
 export default function WishPopOut({
   name,
@@ -22,8 +27,7 @@ export default function WishPopOut({
   isLiked,
   id,
 }) {
-
-  const { themeColor }  = useContext(PartyContext)
+  const { themeColor } = useContext(PartyContext);
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [action, setAction] = useState("");
@@ -66,8 +70,22 @@ export default function WishPopOut({
   async function onSubmit(data) {
     data.id = id;
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log(data);
+      const passcode = await getPasscode();
+
+      if (data.passcode == passcode) {
+        if (action == "to delete") {
+          await deleteData("wishes", data.id);
+        } else if (action == "to like") {
+          await updateData("wishes", data.id, { isLiked: true });
+        } else {
+          await updateData("wishes", data.id, { isLiked: false });
+        }
+      } else {
+        throw new Error("Incorrect passcode");
+      }
+
       reset();
     } catch (error) {
       setError("root", {
@@ -96,7 +114,11 @@ export default function WishPopOut({
           <Popover.Content>
             <Popover.Arrow />
             <Popover.Body>
-              <Popover.Title color={`${themeColor}.600`} fontWeight="semibold" fontStyle={"italic"}>
+              <Popover.Title
+                color={`${themeColor}.600`}
+                fontWeight="semibold"
+                fontStyle={"italic"}
+              >
                 {" "}
                 Wish from {name}
               </Popover.Title>
@@ -106,9 +128,9 @@ export default function WishPopOut({
                 <Flex justify={"end"} width={"full"} gap={0}>
                   <IconButton onClick={toggleLike} variant={"ghost"}>
                     {isLiked ? (
-                      <IoHeartSharp style={{ color: 'red' }} />
+                      <IoHeartSharp style={{ color: "red" }} />
                     ) : (
-                      <IoHeartOutline style={{ color: 'red' }} />
+                      <IoHeartOutline style={{ color: "red" }} />
                     )}
                   </IconButton>
                   <IconButton onClick={handleDelete} variant={"ghost"}>
