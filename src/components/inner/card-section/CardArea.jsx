@@ -1,7 +1,13 @@
 import { Flex } from "@chakra-ui/react";
 import PartyDetails from "./PartyDetails";
+import { useContext } from "react";
+import { PartyContext } from "@/pages/Invitation";
 
 function CardArea() {
+  const { themeColor } = useContext(PartyContext)
+  const darkThemeColor = `${themeColor}.800`
+  const lightThemeColor = `${themeColor}.300`
+
   return (
     <Flex
       bgGradient={{ base: "to-b", xl: "to-b" }}
@@ -9,8 +15,8 @@ function CardArea() {
       roundedBottomRight={{ base: "xl", md: 'none' }}
       roundedTopLeft={{ base: "xl" }}
       roundedTopRight={{ base: "xl", xl: "none" }}
-      gradientFrom={"blue.800"}
-      gradientTo={"red.300"}
+      gradientFrom={darkThemeColor}
+      gradientTo={lightThemeColor}
       color={"white"}
       justify={"center"}
       align={"center"}

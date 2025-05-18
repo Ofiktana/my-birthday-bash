@@ -1,11 +1,7 @@
 import { Flex, Text, Link } from "@chakra-ui/react";
 import CardArea from "./card-section/CardArea";
-import Wish from "./wishes-section/Wish";
-import WishPopOut from "./wishes-section/WishPopOut";
 import MobileInvitationTabs from "./MobileInvitationTabs";
 import WishesTitle from "./wishes-section/WishesTitle";
-import WishesTabs from "./wishes-section/WishesTabs";
-import { IoLogoInstagram } from "react-icons/io5";
 import WishesCatalog from "./wishes-section/WishesCatalog";
 
 function MainArea() {

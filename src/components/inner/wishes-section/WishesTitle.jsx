@@ -1,14 +1,19 @@
-import { Text, Flex } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+import { useContext } from "react";
+import { PartyContext } from "@/pages/Invitation";
 
-function WishesTitle({ name }) {
+function WishesTitle() {
+  const name = useContext(PartyContext).celebrantFirstName
+  const { themeColor } = useContext(PartyContext)
+  const darkThemeColor = `${themeColor}.600`
+  const lightThemeColor = `${themeColor}.300`
+
   return (
     <Text
       textAlign={"center"}
-      color={"blue.600"}
+      color={darkThemeColor}
       fontWeight={"bold"}
       textStyle={{base: "xl", md: '2xl'}}
-      textShadow={"0 0 1px red"}
-
     >
       Birthday Wishes for {name}
     </Text>

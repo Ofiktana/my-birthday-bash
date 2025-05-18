@@ -1,24 +1,18 @@
 import { FaLocationDot, FaCalendar, FaClock } from "react-icons/fa6";
-import { VStack, Image, Text, Flex, Button, Icon, Link } from "@chakra-ui/react";
-import jasper from "../../../assets/jasper.jpg";
+import {
+  VStack,
+  Image,
+  Text,
+  Flex,
+  Icon,
+} from "@chakra-ui/react";
 import moment from "moment";
+import AddWishDialog from "../dialogs/AddWishDialog";
+import { PartyContext } from "@/pages/Invitation";
+import { useContext } from "react";
 
 function PartyDetails() {
-  const partyDetails = {
-    celebrantFirstName: "Jasper",
-    celebrantLastName: "Ofik",
-    imgURL: jasper,
-    age: 7,
-    title: "Jasper's 7th Birthday",
-    location: "Flat 2, GilMartins House, 102 Collingdon Street, Luton. LU1 1RX",
-    start: new Date(2025, 4, 24, 15, 0, 0),
-    end: new Date(2025, 4, 24, 18, 0, 0),
-    contact: {
-      name: "Belema",
-      means: "WhatsApp",
-      phone: "07407147184",
-    },
-  };
+  const partyDetails = useContext(PartyContext)
 
   const program = [
     {
@@ -43,12 +37,17 @@ function PartyDetails() {
       border={"1px solid white"}
       width={"100%"}
       height={"100%"}
-      gap={{base: 2, xl: 8}}
+      gap={{ base: 2, xl: 8 }}
       p={4}
-      justify={'space-evenly'}
+      justify={"space-evenly"}
     >
-      <Text textAlign={'center'} fontWeight={"semibold"} textStyle={{base: '3xl', md: "4xl"}}>
-        {partyDetails.title || `${partyDetails.celebrantFirstName} @ ${partyDetails.age}`}
+      <Text
+        textAlign={"center"}
+        fontWeight={"semibold"}
+        textStyle={{ base: "3xl", md: "4xl" }}
+      >
+        {partyDetails.title ||
+          `${partyDetails.celebrantFirstName} @ ${partyDetails.age}`}
       </Text>
       <Flex
         gap={4}
@@ -83,12 +82,28 @@ function PartyDetails() {
           })}
         </Flex>
       </Flex>
-      <Text fontStyle={'italic'} mt={0} textStyle={{base: 'xs', sm: "sm"}} textAlign={"center"}>
+      <Text
+        fontStyle={"italic"}
+        mt={0}
+        textStyle={{ base: "xs", sm: "sm" }}
+        textAlign={"center"}
+      >
         Please contact {partyDetails.contact.name} via{" "}
-        {partyDetails.contact.means} on {partyDetails.contact.phone} for any dietary or other requirements. We hope to see
-        you there! {' '} <br/>
+        {partyDetails.contact.means} on {partyDetails.contact.phone} for any
+        dietary or other requirements. We hope to see you there! <br />
       </Text>
-      <Link textAlign={'center'} textStyle={'md'} color={'pink.800'} fontFamily={'inherit'} fontWeight={'semibold'} rounded={'lg'} textDecoration={'underline'} >Click here to send {partyDetails.celebrantFirstName} a birthday wish</Link>
+      {/* <Link
+        textAlign={"center"}
+        textStyle={"sm"}
+        color={"pink.800"}
+        fontFamily={"inherit"}
+        fontWeight={"semibold"}
+        rounded={"lg"}
+        textDecoration={"underline"}
+      >
+        Click here to send {partyDetails.celebrantFirstName} a birthday wish
+      </Link> */}
+      <AddWishDialog />
     </VStack>
   );
 }
