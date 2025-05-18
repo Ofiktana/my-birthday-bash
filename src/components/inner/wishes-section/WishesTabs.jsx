@@ -77,7 +77,7 @@ function WishesTabs() {
           ))}
         </Flex>
       </Tabs.Content>
-      <Tabs.Content value="liked">
+      <Tabs.Content value="liked" h={"full"}>
         <Flex
           wrap={"wrap"}
           overflowY={"scroll"}
