@@ -22,7 +22,7 @@ function Invitation() {
       means: "WhatsApp",
       phone: "07407147184",
     },
-    themeColor: "cyan",
+    themeColor: "green",
   };
 
   return (

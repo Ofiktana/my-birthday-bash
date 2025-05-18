@@ -27,7 +27,7 @@ function WishesCatalog() {
           cursor={"pointer"}
           href="https://www.instagram.com/reen_kids_store/"
           color={'inherit'}
-          
+          borderBottom={`2px solid ${themeColor}`}
         >
           <IoLogoInstagram />
           <Text fontWeight={'semibold'}>@reen_kids_store</Text>
