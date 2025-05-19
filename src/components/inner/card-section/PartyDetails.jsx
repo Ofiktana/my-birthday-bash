@@ -37,14 +37,14 @@ function PartyDetails() {
       border={"1px solid white"}
       width={"100%"}
       height={"100%"}
-      gap={{ base: 2, xl: 8 }}
+      gap={{ base: 2, xl: 4 }}
       p={4}
       justify={"space-evenly"}
     >
       <Text
         textAlign={"center"}
         fontWeight={"semibold"}
-        textStyle={{ base: "3xl", md: "4xl" }}
+        textStyle={{ base: "2xl", md: "2xl" }}
       >
         {partyDetails.title ||
           `${partyDetails.celebrantFirstName} @ ${partyDetails.age}`}
