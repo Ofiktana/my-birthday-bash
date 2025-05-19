@@ -15,12 +15,12 @@ function WishesCatalog() {
         justify={"center"}
         textStyle={"xs"}
         direction={"row"}
-        gap={16}
+        gap={2}
         color={`${themeColor}.600`}
         
       >
         <Text textStyle={"xs"} fontStyle={"italic"} fontWeight={'semibold'} textAlign={"center"}>
-          RKS © 2025
+          Powered by
         </Text>
         <Link
           target="_blank"

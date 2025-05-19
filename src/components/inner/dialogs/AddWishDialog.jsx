@@ -1,15 +1,16 @@
 import AddWish from "../forms/AddWish";
 import { Link, CloseButton, Dialog, Portal } from "@chakra-ui/react";
-import { GrSend } from "react-icons/gr";
 import { PartyContext } from "@/pages/Invitation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import SuccessFeedback from "../forms/SuccessFeedback";
 
 function AddWishDialog() {
-  const celebrant = useContext(PartyContext).celebrantFirstName
-  const { themeColor } = useContext(PartyContext)
+  const celebrant = useContext(PartyContext).celebrantFirstName;
+  const { themeColor } = useContext(PartyContext);
+  const [mode, setMode] = useState("form");
 
   return (
-    <Dialog.Root size={{ base: "sm", md: "md" }}>
+    <Dialog.Root size={{ base: "sm", md: "md" }} onOpenChange={()=>{setMode('form')}}>
       <Dialog.Trigger asChild>
         <Link
           textAlign={"center"}
@@ -28,11 +29,24 @@ function AddWishDialog() {
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title fontFamily={'inherit'} fontWeight={'semibold'} color={`${themeColor}.600`}>Send a Wish </Dialog.Title>
+              <Dialog.Title
+                fontFamily={"inherit"}
+                fontWeight={"semibold"}
+                color={`${themeColor}.600`}
+              >
+                { mode == 'form' ? 'Send a Wish' : ''}
+              </Dialog.Title>
             </Dialog.Header>
-            <Dialog.Body>
-              <AddWish celebrant={celebrant} />
-            </Dialog.Body>
+            <Dialog.Context>
+              {(store) => (
+                <Dialog.Body>
+                  {mode == "form" && (
+                    <AddWish celebrant={celebrant} setMode={setMode} />
+                  )}
+                  {mode == "success" && <SuccessFeedback setMode={setMode} setOpen={store.setOpen} />}
+                </Dialog.Body>
+              )}
+            </Dialog.Context>
             <Dialog.CloseTrigger asChild>
               <CloseButton size="sm" />
             </Dialog.CloseTrigger>

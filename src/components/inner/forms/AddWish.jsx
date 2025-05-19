@@ -12,7 +12,7 @@ import { PartyContext } from "@/pages/Invitation";
 import { useForm } from "react-hook-form";
 import { addNewDoc } from "@/firebase-config/firebase";
 
-function AddWish({ celebrant }) {
+function AddWish({ celebrant, setMode }) {
   const {
     register,
     handleSubmit,
@@ -39,6 +39,8 @@ function AddWish({ celebrant }) {
 
       reset()
       
+      setMode('success')
+
     } catch (error) {
       setError("root", {
         message: error.message,

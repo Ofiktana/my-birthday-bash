@@ -43,6 +43,7 @@ export default function WishPopOut({
   }
 
   function exitPopOver() {
+    reset()
     setShowConfirm(false);
   }
 
@@ -85,13 +86,16 @@ export default function WishPopOut({
       } else {
         throw new Error("Incorrect passcode");
       }
-
+      
       reset();
+
+      setShowConfirm(false);
+      
     } catch (error) {
       setError("root", {
         message: error.message,
       });
-    }
+    } 
   }
 
   return (
@@ -142,7 +146,7 @@ export default function WishPopOut({
                     style={{
                       display: "flex",
                       gap: "1rem",
-                      flexDirection: "column",
+                      flexDirection: "row",
                       width: "100%",
                       alignItems: "start",
                     }}
@@ -152,7 +156,7 @@ export default function WishPopOut({
                       {...register("passcode", {
                         required: "This field is required",
                       })}
-                      placeholder={`Enter passcode ${action}`}
+                      placeholder={`Enter code ${action}`}
                     />
                     {errors.passcode && (
                       <Text textStyle={"xs"} color={"red"}>
