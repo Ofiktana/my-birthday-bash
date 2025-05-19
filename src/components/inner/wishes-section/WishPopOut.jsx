@@ -43,7 +43,7 @@ export default function WishPopOut({
   }
 
   function exitPopOver() {
-    reset()
+    reset();
     setShowConfirm(false);
   }
 
@@ -86,16 +86,15 @@ export default function WishPopOut({
       } else {
         throw new Error("Incorrect passcode");
       }
-      
+
       reset();
 
       setShowConfirm(false);
-      
     } catch (error) {
       setError("root", {
         message: error.message,
       });
-    } 
+    }
   }
 
   return (
@@ -146,30 +145,33 @@ export default function WishPopOut({
                     style={{
                       display: "flex",
                       gap: "1rem",
-                      flexDirection: "row",
+                      flexDirection: "column",
                       width: "100%",
                       alignItems: "start",
+                      bg: 'white'
                     }}
                     onSubmit={handleSubmit(onSubmit)}
                   >
-                    <Input
-                      {...register("passcode", {
-                        required: "This field is required",
-                      })}
-                      placeholder={`Enter code ${action}`}
-                    />
-                    {errors.passcode && (
-                      <Text textStyle={"xs"} color={"red"}>
-                        {errors.passcode.message}
-                      </Text>
-                    )}
-                    <Button
-                      disabled={isSubmitting}
-                      type="submit"
-                      colorPalette={themeColor}
-                    >
-                      {isSubmitting ? "Confirming . . ." : "Confirm"}
-                    </Button>
+                    <Flex direction={'column'} width={"full"} gap={4}>
+                      <Input
+                        {...register("passcode", {
+                          required: "This field is required",
+                        })}
+                        placeholder={`Enter code ${action}`}
+                      />
+                      {errors.passcode && (
+                        <Text textStyle={"xs"} color={"red"}>
+                          {errors.passcode.message}
+                        </Text>
+                      )}
+                      <Button
+                        disabled={isSubmitting}
+                        type="submit"
+                        colorPalette={themeColor}
+                      >
+                        {isSubmitting ? "Confirming . . ." : "Confirm"}
+                      </Button>
+                    </Flex>
                     {errors.root && (
                       <Text
                         textStyle={"xs"}
